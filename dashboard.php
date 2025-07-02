@@ -7,21 +7,33 @@ if (!isset ($_SESSION['usuario'])) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-  <title>Área do sistema</title>
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="w3-container">
-  <div class="w3-bar w3-blue">
-    <span class="w3-bar-item">Olá, <?php echo $_SESSION['usuario']; ?>!</span>
-    <a href="logout.php" class="w3-bar-item w3-button w3-right">Sair</a>
+<body>
+  <div class="container">
+    <img src="banner aumigo.png" alt="banner" class="decorativa">
+    <h2>Bem-vindo à Clínica AumorPet</h2>
+    <p>Como podemos te ajudar? </p>
+    <ul>
+      <li><a href="cadastrar_tutor.php">Cadastrar Tutor</a></li>
+      <li><a href="listar_tutores.php">Listar Tutores</a></li>
+      <li><a href="sobre.html">Sobre Nós</a></li>
+      <li><a href="logout.php">Sair</a></li>
+    </ul>
   </div>
+  
+  <div class="gif-container">
+  <img src="cachorro.gif" alt="Cachorro" class="gif hide-on-load">
+  <img src="gato.gif" alt="Gato" class="gif hide-on-load">
+  <img src="coelho.gif" alt="Coelho" class="gif hide-on-load">
+</div>
 
-  <h2 class="w3-margin-top">Área de administração</h2>
-  <ul class="w3-ul">
-    <li><a href="cadastrar_tutor.php">Cadastrar Tutor</a></li>
-    <li><a href="listar_tutores.php">Listar Tutores</a></li>
-  </ul>
+  <footer>
+    © 2025 Clínica AumorPet. Todos os direitos reservados.
+  </footer>
 </body>
 </html>

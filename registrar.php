@@ -8,7 +8,7 @@ if($_SERVER ['REQUEST_METHOD'] == 'POST') {
     $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
 
-    $SQL = " INSERT INTO usuarios (nome, email, senha) VALUES ('$nome', '$email','$senha') ";
+    $sql = " INSERT INTO usuarios (nome, email, senha) VALUES ('$nome', '$email','$senha') ";
 
     if ($conn -> query($sql)) {
         echo "Parabéns, seu usuário foi cadastrado com sucesso. <a href= 'index.html'> Fazer login </a>";
@@ -20,20 +20,26 @@ if($_SERVER ['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-  <title>Cadastro</title>
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <meta charset="UTF-8">
+  <title>Registrar</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="w3-container">
-  <div class="w3-card w3-padding w3-margin w3-light-grey" style="max-width:400px;margin:auto;">
+<body>
+  <div class="container">
+    <img src="https://media.giphy.com/media/BzyTuYCmvSORqs1ABM/giphy.gif" alt="animal fofo" class="decorativa">
     <h2>Cadastro</h2>
     <form method="POST">
-      <input class="w3-input w3-margin-bottom" name="nome" placeholder="Nome" required>
-      <input class="w3-input w3-margin-bottom" name="email" type="email" placeholder="Email" required>
-      <input class="w3-input w3-margin-bottom" name="senha" type="password" placeholder="Senha" required>
-      <button class="w3-button w3-green" type="submit">Cadastrar</button>
+      <input name="nome" placeholder="Nome" required>
+      <input name="email" type="email" placeholder="Email" required>
+      <input name="senha" type="password" placeholder="Senha" required>
+      <button type="submit">Cadastrar</button>
     </form>
+    <p>Já tem conta? <a href="index.html">Faça login</a></p>
   </div>
+  <footer>
+    © 2025 Clínica AumorPet. Todos os direitos reservados.
+  </footer>
 </body>
 </html>

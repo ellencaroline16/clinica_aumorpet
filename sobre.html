@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Sobre</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="fundo-gradiente">
+  <div class="container sobre-nos">
+    <h2>Sobre Nós</h2>
+    <img src="minha_foto.jpg" alt="Foto Ellen" class="foto-perfil">
+    <p>
+      Olá! Meu nome é <strong>Ellen Silva</strong> e sou apaixonada por tecnologia e animais. <br><br>
+      Criei este site com muito carinho para demonstrar os conhecimentos adquiridos no curso e ao mesmo tempo homenagear nossos bichinhos de estimação. <br><br>
+      No meu caso, a <strong>Dara</strong> 🌟 que virou estrelinha no ano passado após 18 anos enchendo de amor a vida da minha família. 💕🐾
+    </p>
+
+    <a href="dashboard.php" class="botao-voltar">← Voltar para o Início</a>
+  </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const gifs = document.querySelectorAll('.gif');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    gifs.forEach(gif => observer.observe(gif));
+  });
+</script>
+
+  <footer class="rodape">
+    © 2025 <strong>Clínica AumorPet</strong>. Todos os direitos reservados.
+  </footer>
+</body>
+</html>
+
+
+
+
+
+

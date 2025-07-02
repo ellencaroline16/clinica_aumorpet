@@ -1,0 +1,47 @@
+<?php
+include("conexao.php");
+
+$sql = "SELECT * FROM pet";
+$result = mysqli_query($conn, $sql);
+?>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista dos Pets</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pets Cadastrados</h1>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Espécie</th>
+                <th>Data de Nascimento</th>
+                <th>ID do Tutor</th>
+                <th>Ações</th>
+            </tr>
+            <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                <tr>
+                    <td><?php echo $row["id"]; ?></td>
+                    <td><?php echo $row["nome"]; ?></td>
+                    <td><?php echo $row["especie"]; ?></td>
+                    <td><?php echo date("d/m/Y", strtotime($row["data_de_nascimento"])); ?></td>
+                    <td><?php echo $row["tutor_id"]; ?></td>
+                    <td>
+                        <a class="botao editar" href="editar_pet.php?id=<?php echo $row['id']; ?>">Editar</a>
+                        <a class="botao excluir" href="excluir_pet.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</a>
+                    </td>
+                </tr>
+            <?php } ?>
+        </table>
+
+        <a href="cadastrar_pet.php" class="voltar">Cadastrar Novo Pet</a><br>
+        <a href="index.php" class="voltar">Voltar ao Início</a>
+    </div>
+</body>
+</html>

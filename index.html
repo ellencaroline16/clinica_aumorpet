@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-  <title>Clínica AUmorPet - Login</title>
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <meta charset="UTF-8">
+  <title>AumorPet - Início</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="w3-container">
-
-  <div class="w3-card w3-padding w3-margin w3-light-grey w3-center" style="max-width:400px;margin:auto;">
+<body>
+  <div class="container">
+    <img src= "dog_fofo.gif" alt="cachorrofofo" class="decorativa">
     <h2>Login</h2>
     <form action="login.php" method="POST">
-      <input class="w3-input w3-margin-bottom" type="email" name="email" placeholder="Email" required>
-      <input class="w3-input w3-margin-bottom" type="password" name="senha" placeholder="Senha" required>
-      <button class="w3-button w3-blue" type="submit">Entrar</button>
+      <input type="email" name="email" placeholder="Email" required><br>
+      <input type="password" name="senha" placeholder="Senha" required><br>
+      <button type="submit">Entrar</button>
     </form>
-    <p class="w3-small">Ainda não tem conta? <a href="registrar.php">Cadastre-se</a></p>
+    <p>Não tem conta? <a href="registrar.php">Cadastre-se</a></p>
   </div>
-
+  <footer>
+    © 2025 Clínica AumorPet. Todos os direitos reservados.
+  </footer>
 </body>
 </html>
