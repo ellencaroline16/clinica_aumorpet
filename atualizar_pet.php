@@ -1,22 +1,29 @@
 <?php
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: index.html");
+    exit();
+}
+
 include 'conectar.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = $_POST['id'];
-    $nome = $_POST['nome'];
-    $especie = $_POST['especie'];
-    $data_nasc = $_POST['data_de_nascimento'];
-    $tutor_id = $_POST['tutor_id'];
 
-    $sql = "UPDATE pet SET nome = ?, especie = ?, data_de_nascimento = ?, tutor_id = ? WHERE id = ?";
+    $id     = intval($_POST['id']);
+    $nome   = trim($_POST['nome']);
+    $especie = trim($_POST['especie']);
+    $raca   = trim($_POST['raca']);
+    $idade  = intval($_POST['idade']);
+
+    $sql = "UPDATE pet SET nome = ?, especie = ?, raca = ?, idade = ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssii", $nome, $especie, $data_nasc, $tutor_id, $id);
+    $stmt->bind_param("sssii", $nome, $especie, $raca, $idade, $id);
 
     if ($stmt->execute()) {
         header("Location: listar_pet.php?mensagem=Pet atualizado com sucesso");
         exit();
     } else {
-        echo "Erro ao atualizar: " . $stmt->error;
+        echo "Erro ao atualizar pet: " . $stmt->error;
     }
 
     $stmt->close();

@@ -5,6 +5,7 @@ body {
   color: #333;
 }
 
+
 .container {
   max-width: 600px;
   margin: 40px auto;
@@ -15,24 +16,51 @@ body {
   text-align: center;
 }
 
-input, button {
+
+.container.sobre-nos {
+  max-width: 700px;
+  background-color: #ffffffdd;
+  padding: 30px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.container.sobre-nos h2 {
+  color: #a64ac9;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.container.sobre-nos p {
+  font-size: 17px;
+  color: #444;
+  line-height: 1.6;
+}
+
+
+input, button, .botao, .botao-voltar {
   width: 90%;
   padding: 10px;
   margin: 10px 0;
   border: none;
   border-radius: 8px;
+  font-family: inherit;
+}
+
+button, .botao, .botao-voltar {
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 button {
   background-color: #c084fc;
   color: white;
-  font-weight: bold;
-  cursor: pointer;
 }
 
 button:hover {
   background-color: #a855f7;
 }
+
 
 a {
   color: #7c3aed;
@@ -43,81 +71,50 @@ a:hover {
   text-decoration: underline;
 }
 
-footer {
+
+.container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.container ul li {
+  margin: 12px 0;
+}
+
+
+footer, .rodape {
+  background-color: #a64ac9;
+  color: #fff;
   text-align: center;
-  margin-top: 50px;
-  padding: 15px;
-  background: #f3e8ff;
+  padding: 15px 10px;
+  width: 100%;
+  font-size: 14px;
   border-top: 1px solid #ccc;
 }
 
-.decorativa {
-  width: 120px;
-  margin: 10px auto;
+
+.decorativa, .banner-grande {
   display: block;
+  margin: 0 auto 30px auto;
+  border-radius: 15px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 30px;
+.decorativa {
+  width: 500px;
+  max-width: 100%;
 }
 
-th, td {
-    padding: 12px;
-    border: 1px solid #ccc;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.8);
+.banner-grande {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 30px auto;
+  border-radius: 15px;
 }
 
-th {
-    background-color: #e0c0f0;
-}
-
-.botao {
-    padding: 6px 12px;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 0.9em;
-}
-
-.botao.editar {
-    background-color: #bda0dc;
-    color: white;
-}
-
-.botao.excluir {
-    background-color: #ff8888;
-    color: white;
-}
-
-.botao:hover {
-    opacity: 0.8;
-}
-
-.fundo-gradiente {
-  background: linear-gradient(135deg, #f8d7dd, #fef3e8, #e6d6f2);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-}
-
-.container.sobre-nos {
-  background-color: #ffffffdd;
-  max-width: 700px;
-  margin: 60px auto;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-.container.sobre-nos h2 {
-  color: #a64ac9;
-  font-size: 28px;
-  margin-bottom: 20px;
-}
 
 .foto-perfil {
   width: 160px;
@@ -126,63 +123,53 @@ th {
   margin-bottom: 20px;
 }
 
-.container.sobre-nos p {
-  font-size: 17px;
-  color: #444;
-  line-height: 1.6;
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
 }
 
-.rodape {
-  background-color: #a64ac9;
-  color: #fff;
+th, td {
+  padding: 12px;
+  border: 1px solid #ccc;
   text-align: center;
-  padding: 15px 10px;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+th {
+  background-color: #e0c0f0;
+}
+
+
+.botao {
+  padding: 6px 12px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+
+.botao.editar {
+  background-color: #bda0dc;
+  color: white;
+}
+
+.botao.excluir {
+  background-color: #ff8888;
+  color: white;
 }
 
 .botao-voltar {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 10px 20px;
   background-color: #a64ac9;
   color: white;
-  border: none;
-  border-radius: 8px;
   text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
 }
 
+
+.botao:hover,
 .botao-voltar:hover {
+  opacity: 0.8;
   background-color: #922bb9;
-}
-
-@media (max-width: 600px) {
-  .container.sobre-nos {
-    padding: 20px;
-    margin: 30px 15px;
-  }
-
-  .foto-perfil {
-    width: 120px;
-  }
-
-  .container.sobre-nos p {
-    font-size: 16px;
-  }
-
-  .botao-voltar {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-
-  .rodape {
-    font-size: 13px;
-    padding: 10px;
-  }
 }
 
 
@@ -207,3 +194,32 @@ th {
   transform: translateY(0);
 }
 
+
+@media (max-width: 600px) {
+  .container.sobre-nos {
+    padding: 20px;
+    margin: 30px 15px;
+  }
+
+  .foto-perfil {
+    width: 120px;
+  }
+
+  .container.sobre-nos p {
+    font-size: 16px;
+  }
+
+  .botao-voltar {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .rodape {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .decorativa {
+    width: 100%;
+  }
+}

@@ -6,22 +6,19 @@ if (!isset($_SESSION['usuario'])) {
 }
 include 'conectar.php';
 
-$mensagem = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome = $_POST['nome'];
     $especie = $_POST['especie'];
-    $raca = $_POST['raca'];
-    $idade = $_POST['idade'];
+    $data_nascimento = $_POST['data_de_nascimento'];
     $tutor_id = $_POST['tutor_id'];
 
-    $sql = "INSERT INTO pets (nome, especie, raca, idade, tutor_id)
-            VALUES ('$nome', '$especie', '$raca', $idade, $tutor_id)";
+    $sql = "INSERT INTO pet (nome, especie, data_de_nascimento, tutor_id)
+            VALUES ('$nome', '$especie', '$data_nascimento', '$tutor_id')";
 
     if ($conn->query($sql)) {
-        $mensagem = "Pet cadastrado com sucesso!";
+        echo "<p class='w3-panel w3-green'>Pet cadastrado com sucesso! <a href='listar_pets.php'>Ver lista</a></p>";
     } else {
-        $mensagem = "Houve um erro ao cadastrar o pet: " . $conn->error;
+        echo "<p class='w3-panel w3-red'>Erro ao cadastrar pet: " . $conn->error . "</p>";
     }
 }
 ?>
@@ -29,29 +26,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cadastro do Pet</title>
-  <link rel="stylesheet" href="style.css">
+    <title>Cadastrar Pet</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
-<body>
-  <div class="container">
+<body class="w3-container" style="background: linear-gradient(135deg, #d4f1f4, #fce4ec);">
+<div class="w3-card w3-padding w3-margin w3-white" style="max-width:500px;margin:auto;">
     <h2>Cadastrar Pet</h2>
-    <?php if ($mensagem): ?>
-      <p class="mensagem"><?= $mensagem ?></p>
-    <?php endif; ?>
     <form method="POST">
-      <input type="text" name="nome" placeholder="Nome do Pet" required>
-      <input type="text" name="especie" placeholder="Espécie (ex: cachorro, gato...)" required>
-      <input type="text" name="raca" placeholder="Raça" required>
-      <input type="number" name="idade" placeholder="Idade" required>
-      <input type="number" name="tutor_id" placeholder="ID do Tutor" required>
-      <button type="submit">Cadastrar</button>
+        <input class="w3-input w3-margin-bottom" name="nome" placeholder="Nome do Pet" required>
+        <input class="w3-input w3-margin-bottom" name="especie" placeholder="Espécie" required>
+        <label>Data de Nascimento:</label>
+        <input class="w3-input w3-margin-bottom" name="data_de_nascimento" type="date" required>
+
+        <label>Selecione o Tutor:</label>
+        <select class="w3-select w3-margin-bottom" name="tutor_id" required>
+            <option value="">Selecione...</option>
+            <?php
+            $result = $conn->query("SELECT id, nome FROM tutores");
+            while ($row = $result->fetch_assoc()) {
+                echo "<option value='{$row['id']}'>{$row['nome']}</option>";
+            }
+            ?>
+        </select>
+
+        <button class="w3-button w3-teal" type="submit">Cadastrar</button>
     </form>
     <br>
-    <a href="dashboard.php">← Voltar ao Dashboard</a>
-  </div>
-
-  <footer>
-    <p>© 2025 Clínica AumorPet. Todos os direitos reservados.</p>
-  </footer>
+    <a href="dashboard.php" class="w3-button w3-light-grey">Voltar</a>
+</div>
 </body>
 </html>
