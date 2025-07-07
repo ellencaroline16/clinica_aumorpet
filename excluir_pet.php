@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
-        header("Location: listar_pet.php?mensagem=Pet deletado com sucesso");
+        header("Location: listar_pets.php?mensagem=Pet deletado com sucesso");
         exit();
     } else {
         echo "Erro ao deletar pet: " . $stmt->error;

@@ -46,6 +46,27 @@ input, button, .botao, .botao-voltar {
   font-family: inherit;
 }
 
+.botao {
+  display: inline-block;
+  margin: 5px;
+}
+
+td .botao {
+  width: auto;
+  display: inline-block;
+  margin: 5px;
+}
+
+.botao.editar {
+  background-color: #4caf50;
+  color: white;
+}
+
+.botao.excluir {
+  background-color: #f44336;
+  color: white;
+}
+
 button, .botao, .botao-voltar {
   cursor: pointer;
   font-weight: bold;

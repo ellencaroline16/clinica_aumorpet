@@ -4,6 +4,7 @@ if (!isset($_SESSION['usuario'])) {
     header("Location: index.html");
     exit();
 }
+
 include 'conectar.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -12,16 +13,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data_nascimento = $_POST['data_de_nascimento'];
     $tutor_id = $_POST['tutor_id'];
 
-    $sql = "INSERT INTO pet (nome, especie, data_de_nascimento, tutor_id)
-            VALUES ('$nome', '$especie', '$data_nascimento', '$tutor_id')";
+    if (empty($tutor_id)) {
+        echo "<p class='w3-panel w3-red'>Erro: Selecione um tutor antes de cadastrar o pet.</p>";
+        return;
+    }
 
-    if ($conn->query($sql)) {
+    $sql = "INSERT INTO pet (nome, especie, data_de_nascimento, tutor_id)
+            VALUES (?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssi", $nome, $especie, $data_nascimento, $tutor_id);
+
+    if ($stmt->execute()) {
         echo "<p class='w3-panel w3-green'>Pet cadastrado com sucesso! <a href='listar_pets.php'>Ver lista</a></p>";
     } else {
-        echo "<p class='w3-panel w3-red'>Erro ao cadastrar pet: " . $conn->error . "</p>";
+        echo "<p class='w3-panel w3-red'>Erro ao cadastrar pet: " . $stmt->error . "</p>";
     }
+
 }
 ?>
+
 
 <!DOCTYPE html>
 <html>
